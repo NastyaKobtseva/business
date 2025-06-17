@@ -1,0 +1,108 @@
+.how {
+    padding: 70px 0;
+}
+.to-enter {
+    padding: 30px 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px 70px;
+    padding: 30px 0 0 0;
+}
+.to-enter__content {
+    flex: 1 1 calc(50% - 35px);
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    transition: transform .3s linear;
+    &:hover {
+        transform: scale(.98);
+        & .to-enter__num svg {
+            transform: rotate(360deg);
+        }
+    }
+}
+.to-enter__num {
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    & svg {
+        fill: rgba(0, 111, 255, 0.7);
+        width: 100px;
+        height: 100px;
+        transition: transform .5s linear;
+    }
+}
+
+.to-enter__num-date {
+    position: absolute;
+    top: 0px;
+    right: 7px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 86px;
+    line-height: 1.2;
+    color: black;
+    width: 100%;
+}
+.to-enter__content-text {
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 25px;
+    color: black;
+}
+@media (max-width: 1024px) {
+  .to-enter {
+    gap: 30px 40px;
+  }
+
+  .to-enter__num svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .to-enter__num-date {
+    font-size: 72px;
+    right: 5px;
+  }
+
+  .to-enter__content-text {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .to-enter {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+
+  .to-enter__content {
+    flex: 1 1 100%;
+  }
+
+  .to-enter__num {
+    flex-shrink: 0;
+  }
+
+  .to-enter__num svg {
+    width: 65px;
+    height: 65px;
+  }
+
+  .to-enter__num-date {
+    font-size: 56px;
+    right: 2px;
+  }
+
+  .to-enter__content-text {
+    font-size: 18px;
+  }
+  .how {
+    padding: 30px 0;
+}
+}

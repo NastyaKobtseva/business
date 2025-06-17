@@ -1,0 +1,105 @@
+.who {
+    padding: 40px 0 70px 0;
+    background-color: #f9fafb;
+}
+.who__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.if {
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px 70px;
+    padding: 30px 0 0 0;
+}
+.if__content {
+    display: flex;
+    align-items: center;
+    flex: 1 1 calc(50% - 35px);
+    gap: 20px;
+    transition: transform .3s linear;
+    &:hover {
+        transform: scale(.98);
+        & svg {
+            animation: movement 1s infinite;
+        }
+    }
+    & svg {
+        fill: rgba(0, 111, 255, 0.7);
+        width: 55px;
+        height: 55px;
+    }
+}
+@keyframes movement {
+    0% {
+        transform: translateX(0);
+    }
+    45% {
+        transform: translateX(-5px);
+    }
+    90% {
+        transform: translateX(0);
+    }
+}
+.if__content-text {
+    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    width: 100%;
+}
+.who__content-btn {
+    margin: 50px 0 0 0;
+}
+@media (max-width: 1024px) {
+    .who {
+        padding: 30px 0 50px 0;
+    }
+  .if {
+    gap: 30px 40px; // менше відступів між блоками
+  }
+
+  .if__content {
+    flex: 1 1 calc(50% - 20px); // трошки компактніше
+  }
+
+  .if__content-text {
+    font-size: 22px;
+  }
+
+  .if__content svg {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+    .who {
+        padding: 30px 0 30px 0;
+    }
+  .if {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .if__content {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+  }
+
+  .if__content-text {
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .if__content svg {
+    width: 40px;
+    height: 40px;
+  }
+  .who__content-btn {
+    margin: 30px 0 0 0;
+}
+}

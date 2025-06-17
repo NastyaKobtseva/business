@@ -1,0 +1,153 @@
+.statistics {
+     position: relative;
+    height: 80vh;
+    overflow: hidden;
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url('../src/image/statistics/statistics-bg.webp');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: blur(8px); // тут розмивання
+        z-index: 0;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5); // затемнення
+        z-index: 1;
+    }
+}
+.statistics__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.statistics__content-title {
+    color: white;
+}
+.statistics__content-line {
+    background-color: white;
+}
+.information {
+    display: flex;
+    padding: 80px 0 0 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+    
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}
+.information__content-num {
+    font-family: "Montserrat", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+    color: white;
+}
+.information__content-subtitle {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.2;
+    color: white;
+}
+@media (max-width: 1024px) {
+  .statistics {
+    height: auto;
+    padding: 60px 0;
+    &::before {
+        background-image: url('../src/image/statistics/statistics-tablet-bg.webp');
+    }
+  }
+
+  .statistics__content {
+    padding: 40px 0 20px;
+  }
+
+  .information {
+    padding-top: 40px;
+    gap: 40px;
+  }
+
+  .information__content-num {
+    font-size: 32px;
+  }
+
+  .information__content-subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .statistics {
+    padding: 40px 0;
+    &::before {
+        background-image: url('../src/image/statistics/statistics-mobile-bg.webp');
+    }
+  }
+
+  .statistics__content {
+    padding: 30px 0 10px;
+  }
+
+  .statistics__content-title {
+    font-size: 28px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .statistics__content-line {
+    width: 60px;
+    height: 3px;
+  }
+
+  .information {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding-top: 30px;
+  }
+
+  .information__content-num {
+    font-size: 28px;
+  }
+
+  .information__content-subtitle {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .statistics {
+    padding: 30px 0;
+  }
+
+  .statistics__content-title {
+    font-size: 24px;
+    padding-bottom: 20px;
+  }
+
+  .information__content-num {
+    font-size: 24px;
+  }
+
+  .information__content-subtitle {
+    font-size: 13px;
+    padding: 0 15px;
+  }
+}

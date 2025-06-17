@@ -1,0 +1,150 @@
+.events {
+    padding: 50px 0 70px 0;
+}
+.activities {
+    padding: 30px 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.activities__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+    & img {
+        width: 319px;
+        height: 180px;
+        border-radius: 20px;
+        border: 2px solid rgb(0, 110, 255);
+    }
+}
+.activities__content-title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    line-height: 1.2;
+    font-size: 20px;
+}
+.activities__content-text {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-align: center;
+    color: rgb(48, 48, 48);
+    line-height: 1.2;
+    font-size: 15px;
+}
+.events__content-social {
+    position: relative;
+
+}
+.events__content-info {
+  position: absolute;
+  top: -10%;  /* або bottom: 0, left: 0 — залежить, куди хочеш, щоб блок з’являвся */
+  left: 0;
+  transform: translateY(10px); /* початково ховаємо праворуч */
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  background-color: white;
+  border: 2px solid rgb(34, 129, 253);
+  border-radius: 20px;
+  padding: 5px 10px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+
+}
+.events__content-info {
+  & a svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+.events__content-social:hover .events__content-info {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (max-width: 1024px) {
+  .activities {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .activities__content img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+  .events__content-info {
+    top: 48%;
+    left: 110px;
+    width: max-content; /* або 100% якщо хочеш ширину по контейнеру */
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .events__content-info a svg {
+    width: 26px;
+    height: 26px;
+  }
+  .events {
+    padding: 30px 0 50px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .activities {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .activities__content {
+    width: 90%;
+  }
+
+  .activities__content-title {
+    font-size: 18px;
+  }
+
+  .activities__content-text {
+    font-size: 14px;
+  }
+
+  .events__content-info {
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translate(-50%, 10px); /* центр по горизонталі */
+    // width: 90vw;
+    flex-wrap: wrap; /* щоб іконки не виходили за межі */
+    justify-content: center;
+    padding: 12px 15px;
+    gap: 12px;
+  }
+
+  .events__content-social:hover .events__content-info {
+    transform: translate(-50%, 0);
+  }
+
+  .events__content-info a svg {
+    width: 24px;
+    height: 24px;
+  }
+  .events {
+    padding: 30px 0 30px 0;
+  } 
+}
+
+@media (max-width: 480px) {
+  .events__content-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}

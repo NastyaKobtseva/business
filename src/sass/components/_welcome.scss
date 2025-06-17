@@ -1,0 +1,112 @@
+.welcome {
+    margin: 54px 0 0 0;
+    position: relative;
+    height: 100vh;
+    background-image: url("../src/image/welcome/welcome-bg.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); 
+        z-index: 1;
+    }
+}
+.welcome__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.welcome__content-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+    line-height: 1.2;
+}
+.welcome__content-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    text-align: center;
+    color: #ffffff;
+    max-width: 700px;
+    margin: 20px auto 0;
+    line-height: 1.5;
+}
+.welcome__content-btn {
+    font-family: 'Fira Mono', monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #2563eb; /* синя */
+    border: none;
+    padding: 14px 32px;
+    margin-top: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.welcome__content-btn:hover {
+  background-color: #1d4ed8; /* темніший синій */
+}
+
+@media (max-width: 1024px) {
+  .welcome {
+    background-image: url("../src/image/welcome/welcome-tablet-bg.webp");
+  }
+    .welcome__content-title {
+    font-size: 36px;
+  }
+
+  .welcome__content-subtitle {
+    font-size: 20px;
+    max-width: 90%;
+  }
+
+  .welcome__content-btn {
+    font-size: 14px;
+    padding: 12px 28px;
+  }
+}
+@media (max-width: 768px) {
+  .welcome {
+    background-image: url("../src/image/welcome/welcome-mobile-bg.webp");
+  }
+    .welcome__content-title {
+    font-size: 28px;
+    padding: 0 10px;
+  }
+
+  .welcome__content-subtitle {
+    font-size: 18px;
+    margin-top: 12px;
+    padding: 0 10px;
+  }
+
+  .welcome__content-btn {
+    font-size: 13px;
+    padding: 10px 24px;
+    margin-top: 20px;
+  }
+  .welcome__content {
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+

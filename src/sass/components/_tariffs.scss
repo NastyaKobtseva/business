@@ -1,0 +1,241 @@
+.tariffs {
+    padding: 0 0 70px 0;
+    background-color: #f9fafb;
+}
+.tariffs__content {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.tariffs__content-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 45px;
+    font-weight: 700;
+    text-align: center;
+    color: blue;
+    padding: 0 0 30px 0;
+    line-height: 1.2;
+}
+.price {
+    padding: 30px 0 0 0;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.price__content {
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 20px;
+    align-items: center;
+    background-color: white;
+    position: relative;
+    transition: transform .3s linear;
+    &:hover {
+        transform: scale(1.02);
+        & .price__link-youtube {
+            transform: scale(1.01) rotate(-360deg);
+        }
+        & .youtube__text {
+            opacity: 1;
+        }
+    }
+
+}
+.price__list {
+    flex-grow: 1;
+}
+
+.price__choose {
+    margin-top: auto;
+}
+.price__content-title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+    font-family: "Montserrat", sans-serif;
+    color: rgb(54, 62, 72);
+}
+.price__content-subtitle {
+    margin-bottom: 1.5rem;
+    color: rgb(75 85 99);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    font-weight: 500;
+}
+.price__content-text {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    color: rgb(58, 62, 69);
+}
+.price__content-text-year {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    color: rgb(75 85 99);
+}
+.price__list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.price__item {
+    display: flex;
+    gap: 5px;
+}
+.price__item-svg {
+    width: 25px;
+    height: 25px;
+}
+.price__item-condition {
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #454545;
+    width: 240px;
+    line-height: 1.2;
+}
+.youtube {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.price__link-youtube {
+    transition: transform .3s linear;
+    & svg {
+        width: 40px;
+        height: 40px;
+    }
+}
+.youtube__text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+    padding: 5px 10px;
+    color: white;
+    background-color: #ff9c00;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity .3s linear;
+}
+.price__choose {
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.2;
+    background-color: rgb(0, 81, 255);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 15px 0;
+    border: none;
+    margin: 50px 0 0 0;
+    transition: transform .3s linear, bg-color .3s linear;
+    &:hover {
+        transform: scale(0.98);
+        background-color: rgb(0, 69, 218);
+    }
+}
+@media (max-width: 1024px) {
+    .tariffs__content-title {
+        font-size: 36px;
+    }
+    .price__content {
+        width: 45%;
+    }
+
+    .youtube {
+        top: 8px;
+        right: 8px;
+    }
+
+    .price__link-youtube svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .youtube__text {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+}
+@media (max-width: 768px) {
+    .tariffs {
+        padding: 0 0 0 0;
+    }
+    .tariffs__content-title {
+        font-size: 28px;
+        padding-bottom: 20px;
+    }
+    .price {
+        gap: 1.5rem;
+        padding: 20px 0 0 0;
+    }
+
+    .price__content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .price__content-title {
+        font-size: 1.25rem;
+        text-align: center;
+    }
+
+    .price__content-subtitle,
+    .price__content-text,
+    .price__content-text-year {
+        text-align: center;
+    }
+
+    .price__list {
+        gap: 12px;
+    }
+
+    .price__item-condition {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .price__choose {
+        margin-top: 30px;
+        font-size: 16px;
+        padding: 12px 0;
+    }
+    .youtube {
+        top: 5px;
+        right: 5px;
+    }
+
+    .price__link-youtube svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .youtube__text {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+    .price__content {
+        &:hover {
+            transform: scale(.98);
+        }
+
+    }
+}

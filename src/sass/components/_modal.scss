@@ -1,0 +1,296 @@
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  overflow-y: auto;
+}
+
+.modal.show {
+  display: block;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.modal.hide {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+  border-radius: 20px;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: slideDown 0.4s ease forwards;
+}
+
+.modal.hide .modal-content {
+  animation: slideUp 0.4s ease forwards;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  font-size: 32px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+
+
+
+// заявка 
+// content modal 
+.form-board {
+  color: rgb(0, 0, 0);
+  font-family: "Montserrat", sans-serif;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.form-board__logo {
+  max-width: 100px;
+  margin-bottom: 15px;
+}
+
+.form-board h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.form-board__radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.radio-cont {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.radio-cont input[type="radio"] {
+  width: 18px;
+  height: 18px;
+}
+
+.radio-cont__text {
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+  text-align: justify;
+}
+
+.form-board__cont-condition {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.form-board input,
+.form-board select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #2f6bee;
+  border-radius: 5px;
+  font-family: inherit;
+  outline: none;
+}
+
+.form-board__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background-color: #ccdafa;
+  padding: 20px;
+  border-radius: 20px;
+  & span {
+    font-size: 13px;
+    text-align: justify;
+  }
+}
+
+.form-board__checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #2563eb;
+  border-radius: 4px;
+  position: relative;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.form-board__checkbox input[type="checkbox"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+    left: 8px;
+    width: 8px;
+    height: 16px;
+  border: solid #2563eb;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.form-board button {
+  width: 100%;
+  background-color: #2563eb;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s linear, transform .3s linear;
+}
+
+.form-board button:hover {
+  background-color: #0855fb;
+  transform: scale(.98);
+}
+@media (max-width: 1024px) {
+.form-board {
+    padding: 15px 25px;
+  }
+
+  .form-board h2 {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  .form-board__radio-group {
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .radio-cont__text {
+    font-size: 13px;
+  }
+
+  .form-board input,
+  .form-board select {
+    padding: 9px 10px;
+    margin-bottom: 13px;
+    font-size: 15px;
+  }
+
+  .form-board__checkbox {
+    padding: 18px;
+    font-size: 12.5px;
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  .form-board__checkbox span {
+    font-size: 12.5px;
+  }
+
+  .form-board button {
+    font-size: 15px;
+    padding: 11px;
+  }
+}
+@media (max-width: 768px) {
+.form-board {
+    padding: 12px 15px;
+  }
+
+  .form-board h2 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .form-board__radio-group {
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .radio-cont__text {
+    font-size: 12.5px;
+  }
+
+  .form-board input,
+  .form-board select {
+    padding: 8px 9px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .form-board__checkbox {
+    padding: 12px;
+    font-size: 11.5px;
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-board__checkbox span {
+    font-size: 11.5px;
+    display: block;
+    text-align: left;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  .form-board__checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 0;
+  }
+
+  .form-board button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
