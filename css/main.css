@@ -1651,6 +1651,12 @@ a {
     padding: 8px 16px;
   }
 }
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
 .modal {
   display: none;
   position: fixed;

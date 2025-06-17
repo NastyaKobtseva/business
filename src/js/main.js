@@ -88,7 +88,21 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // modal 
+let scrollPositionContent = 0;
 
+function disableScroll() {
+  scrollPositionContent = window.pageYOffset || document.documentElement.scrollTop;
+  document.body.classList.add('modal-open');
+  document.body.style.top = `-${scrollPositionContent}px`;
+}
+
+function enableScroll() {
+  document.body.classList.remove('modal-open');
+  document.body.style.top = '';
+  window.scrollTo(0, scrollPositionContent);
+}
+
+// Відкриття модалки
 document.querySelectorAll('.open-modal').forEach(button => {
   button.addEventListener('click', () => {
     const targetId = button.getAttribute('data-target');
@@ -96,9 +110,12 @@ document.querySelectorAll('.open-modal').forEach(button => {
     modal.classList.remove('hide');
     modal.classList.add('show');
     modal.style.display = 'block';
+
+    disableScroll(); // Заборона прокрутки
   });
 });
 
+// Закриття через кнопку .close
 document.querySelectorAll('.modal .close').forEach(closeBtn => {
   closeBtn.addEventListener('click', () => {
     const modal = closeBtn.closest('.modal');
@@ -107,10 +124,12 @@ document.querySelectorAll('.modal .close').forEach(closeBtn => {
 
     setTimeout(() => {
       modal.style.display = 'none';
-    }, 400); // Час = тривалості анімації
+      enableScroll(); // Повернення прокрутки
+    }, 400);
   });
 });
 
+// Закриття при кліку на фон (overlay)
 window.addEventListener('click', e => {
   if (e.target.classList.contains('modal')) {
     e.target.classList.remove('show');
@@ -118,11 +137,12 @@ window.addEventListener('click', e => {
 
     setTimeout(() => {
       e.target.style.display = 'none';
+      enableScroll(); // Повернення прокрутки
     }, 400);
   }
 });
 
-
+// Перемикач між "власник" і "менеджер"
 document.querySelectorAll('.form-board').forEach(form => {
   const radioOwner = form.querySelector('.radio-owner');
   const radioManager = form.querySelector('.radio-manager');
@@ -143,37 +163,26 @@ document.querySelectorAll('.form-board').forEach(form => {
   }
 });
 
-
-  document.querySelectorAll('.modal form').forEach(form => {
+// Обробка форми в модалці
+document.querySelectorAll('.modal form').forEach(form => {
   const submitButton = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Перевіряємо валідність форми (враховує required)
     if (form.checkValidity()) {
-      // Визначаємо мову (наприклад, по <html lang="uk">)
       const lang = document.documentElement.lang || 'uk';
-
-      // Вибираємо текст для успішної відправки з data-атрибутів кнопки
       const successText = submitButton.getAttribute(`data-${lang}-success`) || "Заявка відправлена ✓";
 
-      // Змінюємо текст кнопки і робимо його зеленим
       submitButton.textContent = successText;
       submitButton.style.color = 'white';
-
-      // Якщо потрібно, можна скинути форму (після відправки)
       form.reset();
 
-      // Ховаємо блок із найманими працівниками, якщо він є
       const employeesWrapper = form.querySelector('#employees-wrapper');
       if (employeesWrapper) {
         employeesWrapper.style.display = 'none';
       }
-
-      // Можна додати ще якісь дії — наприклад, відправку на сервер через AJAX
     } else {
-      // Якщо форма не валідна, дозволяємо браузеру показати повідомлення
       form.reportValidity();
     }
   });
