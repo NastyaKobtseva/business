@@ -13,6 +13,10 @@
     gap: 10px;
     align-items: center;
     text-align: center;
+    transition: transform .3s linear;
+    &:hover {
+      transform: scale(.98);
+    }
     & img {
         width: 319px;
         height: 180px;

@@ -1417,6 +1417,10 @@ a {
   flex-direction: column;
   gap: 10px;
   align-items: center;
+  transition: transform 0.3s linear;
+}
+.information__content:hover {
+  transform: scale(0.98);
 }
 
 .information__content-num {
@@ -1524,6 +1528,10 @@ a {
   gap: 10px;
   align-items: center;
   text-align: center;
+  transition: transform 0.3s linear;
+}
+.activities__content:hover {
+  transform: scale(0.98);
 }
 .activities__content img {
   width: 319px;

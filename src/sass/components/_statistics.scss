@@ -48,6 +48,10 @@
         flex-direction: column;
         gap: 10px;
         align-items: center;
+        transition: transform .3s linear;
+        &:hover {
+          transform: scale(.98);
+        }
     }
 }
 .information__content-num {
