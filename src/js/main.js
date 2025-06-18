@@ -189,10 +189,6 @@ document.querySelectorAll('.modal form').forEach(form => {
 });
 
 
-  
-
-
-
 // carousel 
 const slides = document.getElementById('carouselSlides');
 
@@ -223,7 +219,7 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.2
+  threshold: 0.1
 });
 
 sections.forEach((section, index) => {
