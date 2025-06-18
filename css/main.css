@@ -975,7 +975,6 @@ a {
   font-weight: 600;
   line-height: 1.2;
   width: 100%;
-  text-align: justify;
 }
 
 @media (max-width: 1024px) {
