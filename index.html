@@ -841,13 +841,13 @@
     <div class="modal" id="modal1">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="https://formspree.io/f/mzzggwdz" method="post">
+            <form action="https://formspree.io/f/mzzggwdz" method="POST">
                 <div class="form-board">
                     <img src="./src/image/header/handshake-icon.svg" alt="АМСБ logo" class="form-board__logo" />
                     <h2 data-uk="Приєднатися до АМСБ" data-en="Join SMBA">Приєднатися до АМСБ</h2>
                     <div class="form-board__radio-group">
                         <div class="radio-cont">
-                            <input type="radio" name="type" class="radio-manager" />
+                            <input value="manager" type="radio" name="type" class="radio-manager" />
                             <label for="radio1" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я найманий менеджер"
@@ -861,7 +861,7 @@
                             </label>
                         </div>
                         <div class="radio-cont">
-                            <input type="radio" name="type" class="radio-owner" />
+                            <input value="owner" type="radio" name="type" class="radio-owner" />
                             <label for="radio2" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я власник бізнесу"
@@ -883,12 +883,12 @@
                         data-uk-placeholder="Телефон"
                         data-en-placeholder="Phone Number" required />
                     <select name="messenger" required>
-                        <option data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
+                        <option disabled selected data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
                             Зручний месенджер для комунікації
                         </option>
-                        <option>Telegram</option>
-                            option>Viber</option>
-                        <option>WhatsApp</option>
+                        <option value="Telegram">Telegram</option>
+                        <option value="Viber">Viber</option>
+                        <option value="WhatsApp">WhatsApp</option>
                     </select>
                     <div class="employees-wrapper" style="display: none;" required>
                         <select name="employees">
@@ -913,7 +913,7 @@
                         data-en-placeholder="City" required/>
 
                     <label class="form-board__checkbox">
-                        <input type="checkbox" required />
+                        <input type="checkbox" name="consent" required />
                         <span data-uk="Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ"
                                 data-en="I consent to the processing of my personal data as outlined in the CONSENT FOR DATA COLLECTION and agree to the PRIVACY POLICY.">
                             Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ
@@ -933,13 +933,13 @@
     <div class="modal" id="modal2">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="https://formspree.io/f/mzzggwdz" method="post">
+            <form action="https://formspree.io/f/mzzggwdz" method="POST">
                 <div class="form-board">
                     <img src="./src/image/header/handshake-icon.svg" alt="АМСБ logo" class="form-board__logo" />
                     <h2 data-uk="Приєднатися до АМСБ" data-en="Join SMBA">Приєднатися до АМСБ</h2>
                     <div class="form-board__radio-group">
                         <div class="radio-cont">
-                            <input type="radio" name="type" class="radio-manager" />
+                            <input value="manager" type="radio" name="type" class="radio-manager" />
                             <label for="radio1" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я найманий менеджер"
@@ -953,7 +953,7 @@
                             </label>
                         </div>
                         <div class="radio-cont">
-                            <input type="radio" name="type" class="radio-owner" />
+                            <input value="owner" type="radio" name="type" class="radio-owner" />
                             <label for="radio2" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я власник бізнесу"
@@ -975,12 +975,12 @@
                         data-uk-placeholder="Телефон"
                         data-en-placeholder="Phone Number" required />
                     <select name="messenger" required>
-                        <option data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
+                        <option disabled selected data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
                             Зручний месенджер для комунікації
                         </option>
-                        <option>Telegram</option>
-                            option>Viber</option>
-                        <option>WhatsApp</option>
+                        <option value="Telegram">Telegram</option>
+                        <option value="Viber">Viber</option>
+                        <option value="WhatsApp">WhatsApp</option>
                     </select>
                     <div class="employees-wrapper" style="display: none;" required>
                         <select name="employees">
@@ -1005,7 +1005,7 @@
                         data-en-placeholder="City" required/>
 
                     <label class="form-board__checkbox">
-                        <input type="checkbox" required />
+                        <input type="checkbox" name="consent" required />
                         <span data-uk="Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ"
                                 data-en="I consent to the processing of my personal data as outlined in the CONSENT FOR DATA COLLECTION and agree to the PRIVACY POLICY.">
                             Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ
@@ -1038,13 +1038,13 @@
     <div class="modal" id="modal4">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="https://formspree.io/f/mzzggwdz" method="post">
+            <form action="https://formspree.io/f/mzzggwdz" method="POST">
                 <div class="form-board">
                     <img src="./src/image/header/handshake-icon.svg" alt="АМСБ logo" class="form-board__logo" />
                     <h2 data-uk="Приєднатися до АМСБ" data-en="Join SMBA">Приєднатися до АМСБ</h2>
                     <div class="form-board__radio-group">
                         <div class="radio-cont">
-                            <input type="radio" name="type" class="radio-manager" />
+                            <input value="manager" type="radio" name="type" class="radio-manager" />
                             <label for="radio1" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я найманий менеджер"
@@ -1058,7 +1058,7 @@
                             </label>
                         </div>
                         <div class="radio-cont">
-                            <input type="radio" name="type" class="radio-owner" />
+                            <input value="owner" type="radio" name="type" class="radio-owner" />
                             <label for="radio2" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я власник бізнесу"
@@ -1080,12 +1080,12 @@
                         data-uk-placeholder="Телефон"
                         data-en-placeholder="Phone Number" required />
                     <select name="messenger" required>
-                        <option data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
+                        <option disabled selected data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
                             Зручний месенджер для комунікації
                         </option>
-                        <option>Telegram</option>
-                            option>Viber</option>
-                        <option>WhatsApp</option>
+                        <option value="Telegram">Telegram</option>
+                        <option value="Viber">Viber</option>
+                        <option value="WhatsApp">WhatsApp</option>
                     </select>
                     <div class="employees-wrapper" style="display: none;" required>
                         <select name="employees">
@@ -1110,7 +1110,7 @@
                         data-en-placeholder="City" required/>
 
                     <label class="form-board__checkbox">
-                        <input type="checkbox" required />
+                        <input type="checkbox" name="consent" required />
                         <span data-uk="Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ"
                                 data-en="I consent to the processing of my personal data as outlined in the CONSENT FOR DATA COLLECTION and agree to the PRIVACY POLICY.">
                             Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ
@@ -1130,13 +1130,13 @@
     <div class="modal" id="modal5">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="https://formspree.io/f/mzzggwdz" method="post">
+            <form action="https://formspree.io/f/mzzggwdz" method="POST">
                 <div class="form-board">
                     <img src="./src/image/header/handshake-icon.svg" alt="АМСБ logo" class="form-board__logo" />
                     <h2 data-uk="Приєднатися до АМСБ" data-en="Join SMBA">Приєднатися до АМСБ</h2>
                     <div class="form-board__radio-group">
                         <div class="radio-cont">
-                            <input type="radio" name="type" class="radio-manager" />
+                            <input value="manager" type="radio" name="type" class="radio-manager" />
                             <label for="radio1" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я найманий менеджер"
@@ -1150,7 +1150,7 @@
                             </label>
                         </div>
                         <div class="radio-cont">
-                            <input type="radio" name="type" class="radio-owner" />
+                            <input value="owner" type="radio" name="type" class="radio-owner" />
                             <label for="radio2" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я власник бізнесу"
@@ -1172,12 +1172,12 @@
                         data-uk-placeholder="Телефон"
                         data-en-placeholder="Phone Number" required />
                     <select name="messenger" required>
-                        <option data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
+                        <option disabled selected data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
                             Зручний месенджер для комунікації
                         </option>
-                        <option>Telegram</option>
-                            option>Viber</option>
-                        <option>WhatsApp</option>
+                        <option value="Telegram">Telegram</option>
+                        <option value="Viber">Viber</option>
+                        <option value="WhatsApp">WhatsApp</option>
                     </select>
                     <div class="employees-wrapper" style="display: none;" required>
                         <select name="employees">
@@ -1202,7 +1202,7 @@
                         data-en-placeholder="City" required/>
 
                     <label class="form-board__checkbox">
-                        <input type="checkbox" required />
+                        <input type="checkbox" name="consent" required />
                         <span data-uk="Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ"
                                 data-en="I consent to the processing of my personal data as outlined in the CONSENT FOR DATA COLLECTION and agree to the PRIVACY POLICY.">
                             Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ

@@ -1,4 +1,4 @@
-// // preloader 
+// preloader 
 window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
 
@@ -179,28 +179,57 @@ function enableScroll() {
 
   // Обробка форми в модалці
   document.querySelectorAll('.modal form').forEach(form => {
-    const submitButton = form.querySelector('button[type="submit"]');
-
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
       if (form.checkValidity()) {
-        const lang = document.documentElement.lang || 'uk';
-        const successText = submitButton.getAttribute(`data-${lang}-success`) || "Заявка відправлена ✓";
+        const formData = new FormData(form);
 
-        submitButton.textContent = successText;
-        submitButton.style.color = 'white';
-        form.reset();
+        fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            const lang = document.documentElement.lang || 'uk';
+            const submitButton = form.querySelector('button[type="submit"]');
+            const successText = submitButton.getAttribute(`data-${lang}-success`) || "Заявка відправлена ✓";
 
-        const employeesWrapper = form.querySelector('#employees-wrapper');
-        if (employeesWrapper) {
-          employeesWrapper.style.display = 'none';
+            submitButton.textContent = successText;
+            submitButton.style.color = 'white';
+            form.reset();
+
+            const employeesWrapper = form.querySelector('.employees-wrapper');
+            if (employeesWrapper) {
+              employeesWrapper.style.display = 'none';
+            }
+          } else {
+            showAlertByLang(document.documentElement.lang || `uk`, `error`);
+          }
+        }).catch(() => {
+          showAlertByLang(document.documentElement.lang || `uk`, `connectionError`);
+        });
+        } else {
+          form.reportValidity();
         }
-      } else {
-        form.reportValidity();
-      }
     });
+    function showAlertByLang(lang, type) {
+      const messages = {
+        uk: {
+          error: `Щось пішло не так. Спробуйте ще раз.`,
+          connectionError: `Сталася помилка з’єднання. Спробуйте пізніше.`
+        }, 
+        en: {
+          error: `Something went wrong. Please try again.`,
+          connectionError: `Connection error occurred. Please try later.`
+        }
+      };
+      alert(messages[lang]?.[type] || messages[`uk`][type])
+    }
   });
+
 });
 
 
