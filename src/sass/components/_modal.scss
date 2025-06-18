@@ -3,6 +3,10 @@ body.modal-open {
   position: fixed;
   width: 100%;
 }
+.open-modal {
+  cursor: pointer;
+   pointer-events: auto;
+}
 .modal {
   display: none;
   position: fixed;

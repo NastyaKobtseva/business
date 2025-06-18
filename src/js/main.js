@@ -1,12 +1,14 @@
-// preloader 
+// // preloader 
 window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
-  preloader.style.opacity = '0';
-  preloader.style.transition = 'opacity 0.5s ease';
 
-  setTimeout(() => {
-    preloader.style.display = 'none';
-  }, 2000);
+  if (preloader) {
+    preloader.classList.add('hidden'); 
+
+    preloader.addEventListener('transitionend', () => {
+      preloader.style.display = 'none';
+    });
+  }
 });
 
 
@@ -88,103 +90,116 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // modal 
-let scrollPositionContent = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  let scrollPositionContent = 0;
 
-function disableScroll() {
+  function disableScroll() {
   scrollPositionContent = window.pageYOffset || document.documentElement.scrollTop;
   document.body.classList.add('modal-open');
   document.body.style.top = `-${scrollPositionContent}px`;
+
+  // Рахуємо ширину скролбару
+  const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+  if (scrollBarWidth > 0) {
+    document.body.style.paddingRight = `${scrollBarWidth}px`;
+  }
 }
 
 function enableScroll() {
   document.body.classList.remove('modal-open');
   document.body.style.top = '';
+  document.body.style.paddingRight = '';
   window.scrollTo(0, scrollPositionContent);
 }
 
-// Відкриття модалки
-document.querySelectorAll('.open-modal').forEach(button => {
-  button.addEventListener('click', () => {
-    const targetId = button.getAttribute('data-target');
-    const modal = document.getElementById(targetId);
-    modal.classList.remove('hide');
-    modal.classList.add('show');
-    modal.style.display = 'block';
+  // Відкриття модалки
+  document.querySelectorAll('.open-modal').forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-target');
+      const modal = document.getElementById(targetId);
+      if (!modal) return;
 
-    disableScroll(); // Заборона прокрутки
-  });
-});
+      modal.classList.remove('hide');
+      modal.classList.add('show');
+      modal.style.display = 'block';
 
-// Закриття через кнопку .close
-document.querySelectorAll('.modal .close').forEach(closeBtn => {
-  closeBtn.addEventListener('click', () => {
-    const modal = closeBtn.closest('.modal');
-    modal.classList.remove('show');
-    modal.classList.add('hide');
-
-    setTimeout(() => {
-      modal.style.display = 'none';
-      enableScroll(); // Повернення прокрутки
-    }, 400);
-  });
-});
-
-// Закриття при кліку на фон (overlay)
-window.addEventListener('click', e => {
-  if (e.target.classList.contains('modal')) {
-    e.target.classList.remove('show');
-    e.target.classList.add('hide');
-
-    setTimeout(() => {
-      e.target.style.display = 'none';
-      enableScroll(); // Повернення прокрутки
-    }, 400);
-  }
-});
-
-// Перемикач між "власник" і "менеджер"
-document.querySelectorAll('.form-board').forEach(form => {
-  const radioOwner = form.querySelector('.radio-owner');
-  const radioManager = form.querySelector('.radio-manager');
-  const employeesWrapper = form.querySelector('.employees-wrapper');
-
-  if (radioOwner && radioManager && employeesWrapper) {
-    radioOwner.addEventListener('change', () => {
-      if (radioOwner.checked) {
-        employeesWrapper.style.display = 'block';
-      }
+      disableScroll();
     });
+  });
 
-    radioManager.addEventListener('change', () => {
-      if (radioManager.checked) {
-        employeesWrapper.style.display = 'none';
-      }
+  // Закриття по кнопці .close
+  document.querySelectorAll('.modal .close').forEach(closeBtn => {
+    closeBtn.addEventListener('click', () => {
+      const modal = closeBtn.closest('.modal');
+      if (!modal) return;
+
+      modal.classList.remove('show');
+      modal.classList.add('hide');
+
+      setTimeout(() => {
+        modal.style.display = 'none';
+        enableScroll();
+      }, 400);
     });
-  }
-});
+  });
 
-// Обробка форми в модалці
-document.querySelectorAll('.modal form').forEach(form => {
-  const submitButton = form.querySelector('button[type="submit"]');
+  // Закриття при кліку на фон (overlay)
+  window.addEventListener('click', e => {
+    if (e.target.classList.contains('modal')) {
+      e.target.classList.remove('show');
+      e.target.classList.add('hide');
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    if (form.checkValidity()) {
-      const lang = document.documentElement.lang || 'uk';
-      const successText = submitButton.getAttribute(`data-${lang}-success`) || "Заявка відправлена ✓";
-
-      submitButton.textContent = successText;
-      submitButton.style.color = 'white';
-      form.reset();
-
-      const employeesWrapper = form.querySelector('#employees-wrapper');
-      if (employeesWrapper) {
-        employeesWrapper.style.display = 'none';
-      }
-    } else {
-      form.reportValidity();
+      setTimeout(() => {
+        e.target.style.display = 'none';
+        enableScroll();
+      }, 400);
     }
+  });
+
+  // Перемикач між "власник" і "менеджер"
+  document.querySelectorAll('.form-board').forEach(form => {
+    const radioOwner = form.querySelector('.radio-owner');
+    const radioManager = form.querySelector('.radio-manager');
+    const employeesWrapper = form.querySelector('.employees-wrapper');
+
+    if (radioOwner && radioManager && employeesWrapper) {
+      radioOwner.addEventListener('change', () => {
+        if (radioOwner.checked) {
+          employeesWrapper.style.display = 'block';
+        }
+      });
+
+      radioManager.addEventListener('change', () => {
+        if (radioManager.checked) {
+          employeesWrapper.style.display = 'none';
+        }
+      });
+    }
+  });
+
+  // Обробка форми в модалці
+  document.querySelectorAll('.modal form').forEach(form => {
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (form.checkValidity()) {
+        const lang = document.documentElement.lang || 'uk';
+        const successText = submitButton.getAttribute(`data-${lang}-success`) || "Заявка відправлена ✓";
+
+        submitButton.textContent = successText;
+        submitButton.style.color = 'white';
+        form.reset();
+
+        const employeesWrapper = form.querySelector('#employees-wrapper');
+        if (employeesWrapper) {
+          employeesWrapper.style.display = 'none';
+        }
+      } else {
+        form.reportValidity();
+      }
+    });
   });
 });
 
