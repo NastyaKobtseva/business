@@ -4,7 +4,7 @@ html {
 }
 body {
     padding: 0;
-    padding: 0;
+    margin: 0;
 }
 *,
 *::before,
@@ -23,10 +23,10 @@ a {
     color: inherit;
 }
 .container {
-    max-width: 1074px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 5px;
+    padding: 0 16px;
 }
 @import "./components/header";
 @import "./components/welcome";
@@ -43,12 +43,12 @@ a {
 
 @media (max-width: 1024px) {
     .container {
-        max-width: 714px;
+        padding: 0 24px;
     }
 }
 @media (max-width: 768px) {
     .container {
-        max-width: 100%;
+        padding: 0 12px;
     }
 }
 

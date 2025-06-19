@@ -2,7 +2,7 @@
     background-color: #0b4054;
 }
 .footer-copyright {
-    padding: 50px 0;
+  padding: 50px 16px;
 }
 .footer__content {
     display: flex;
@@ -106,7 +106,7 @@
    
   }
     .footer-copyright {
-    padding: 30px 0;
+    padding: 30px 24px;
     }
   .last {
     gap: 30px;
@@ -127,7 +127,7 @@
 
 @media (max-width: 768px) {
     .footer-copyright {
-    padding: 20px 0;
+    padding: 20px 12px;
     }
   .footer__content {
     gap: 15px; 

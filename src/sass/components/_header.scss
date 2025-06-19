@@ -137,9 +137,6 @@
   color: white;
 }
 @media (max-width: 1024px) {
-  .header {
-    padding: 15px 50px;
-  }
   .hamburger {
     display: block;
     position: relative;
@@ -251,17 +248,11 @@
 
 
 @media (max-width: 768px) {
-  .header {
-    padding: 15px 30px;
-  }
   .closeIcon {
     right: 1.6rem;
   }
 }
 @media (max-width: 356px) {
-  .header {
-    padding: 0px 0;
-  }
   .closeIcon {
     right: 1.6rem;
   }

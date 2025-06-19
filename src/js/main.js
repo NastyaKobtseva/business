@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  switchLanguage(currentLanguage); // Викликаємо функцію з урахуванням збереженої мови
+  switchLanguage(currentLanguage);
 });
 
 // modal 
@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('modal-open');
   document.body.style.top = `-${scrollPositionContent}px`;
 
-  // Рахуємо ширину скролбару
   const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
   if (scrollBarWidth > 0) {
     document.body.style.paddingRight = `${scrollBarWidth}px`;
@@ -112,7 +111,6 @@ function enableScroll() {
   window.scrollTo(0, scrollPositionContent);
 }
 
-  // Відкриття модалки
   document.querySelectorAll('.open-modal').forEach(button => {
     button.addEventListener('click', () => {
       const targetId = button.getAttribute('data-target');
@@ -127,7 +125,6 @@ function enableScroll() {
     });
   });
 
-  // Закриття по кнопці .close
   document.querySelectorAll('.modal .close').forEach(closeBtn => {
     closeBtn.addEventListener('click', () => {
       const modal = closeBtn.closest('.modal');
@@ -143,7 +140,6 @@ function enableScroll() {
     });
   });
 
-  // Закриття при кліку на фон (overlay)
   window.addEventListener('click', e => {
     if (e.target.classList.contains('modal')) {
       e.target.classList.remove('show');
@@ -156,7 +152,6 @@ function enableScroll() {
     }
   });
 
-  // Перемикач між "власник" і "менеджер"
   document.querySelectorAll('.form-board').forEach(form => {
     const radioOwner = form.querySelector('.radio-owner');
     const radioManager = form.querySelector('.radio-manager');
@@ -177,7 +172,6 @@ function enableScroll() {
     }
   });
 
-  // Обробка форми в модалці
   document.querySelectorAll('.modal form').forEach(form => {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
