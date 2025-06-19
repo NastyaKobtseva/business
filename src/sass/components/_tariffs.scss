@@ -1,10 +1,6 @@
 .tariffs {
-    padding: 0 0 70px 0;
+    padding: 50px 0 70px 0;
     background-color: #f9fafb;
-}
-.tariffs__content {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
 }
 .tariffs__content-title {
     font-family: "Montserrat", sans-serif;
@@ -153,6 +149,9 @@
     }
 }
 @media (max-width: 1024px) {
+    .tariffs {
+        padding: 30px 0 50px 0;
+    }
     .tariffs__content-title {
         font-size: 36px;
     }
@@ -177,7 +176,7 @@
 }
 @media (max-width: 768px) {
     .tariffs {
-        padding: 0 0 0 0;
+        padding: 30px 0 30px 0;
     }
     .tariffs__content-title {
         font-size: 28px;
