@@ -7,11 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css" />
     <link rel="stylesheet" href="./css/main.min.css">
     <title>Business Association</title>
 </head>
 <body>
-    
     <div id="preloader">
         <img src="./src/image/header/handshake-icon.svg" alt="Loading logo" />
     </div>
@@ -838,13 +838,13 @@
     <div class="modal" id="modal1">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="https://formspree.io/f/mzzggwdz" method="POST">
+            <form id="join-form" action="https://formspree.io/f/mzzggwdz" method="POST">
                 <div class="form-board">
                     <img src="./src/image/header/handshake-icon.svg" alt="АМСБ logo" class="form-board__logo" />
                     <h2 data-uk="Приєднатися до АМСБ" data-en="Join SMBA">Приєднатися до АМСБ</h2>
                     <div class="form-board__radio-group">
                         <div class="radio-cont">
-                            <input value="manager" type="radio" name="type" class="radio-manager" />
+                            <input autocomplete="off" value="manager" type="radio" name="type" class="radio-manager" required/>
                             <label for="radio1" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я найманий менеджер"
@@ -858,7 +858,7 @@
                             </label>
                         </div>
                         <div class="radio-cont">
-                            <input value="owner" type="radio" name="type" class="radio-owner" />
+                            <input autocomplete="off" value="owner" type="radio" name="type" class="radio-owner" />
                             <label for="radio2" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я власник бізнесу"
@@ -872,14 +872,14 @@
                             </label>
                         </div>
                     </div>
-                    <input type="text" name="name" placeholder="Ім’я та прізвище"
+                    <input id="name-input" type="text" autocomplete="name" name="name" placeholder="Ім’я та прізвище"
                         data-uk-placeholder="Ім’я та прізвище"
                         data-en-placeholder="Full Name" required />
 
-                    <input type="text" name="phone" placeholder="Телефон"
+                    <input id="phone-input" type="tel" autocomplete="tel" name="phone" placeholder="Телефон"
                         data-uk-placeholder="Телефон"
                         data-en-placeholder="Phone Number" required />
-                    <select name="messenger" required>
+                    <select name="messenger" autocomplete="off" required>
                         <option disabled selected data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
                             Зручний месенджер для комунікації
                         </option>
@@ -888,7 +888,7 @@
                         <option value="WhatsApp">WhatsApp</option>
                     </select>
                     <div class="employees-wrapper" style="display: none;" required>
-                        <select name="employees">
+                        <select name="employees" autocomplete="off">
                             <option disabled selected data-uk="Кількість найманих працівників" data-en="Number of employees">Кількість найманих працівників</option>
                             <option value="1-5">1–5</option>
                             <option value="6-10">6–10</option>
@@ -898,19 +898,19 @@
                             <option value="100+">100 і більше</option>
                         </select>
                     </div>
-                    <input type="email" name="email" placeholder="Email"
+                    <input id="email-input" type="email" autocomplete="email" name="email" placeholder="Email"
                         data-en-placeholder="Email" required />
 
-                    <input type="text" name="company" placeholder="Назва компанії"
+                    <input id="company-input" type="text" name="company" autocomplete="organization" placeholder="Назва компанії"
                         data-uk-placeholder="Назва компанії"
                         data-en-placeholder="Company Name" required />
 
-                    <input type="text" name="city" placeholder="Місто"
+                    <input id="city-input" type="text" name="city" autocomplete="address-level2" placeholder="Місто"
                         data-uk-placeholder="Місто"
                         data-en-placeholder="City" required/>
 
                     <label class="form-board__checkbox">
-                        <input type="checkbox" name="consent" required />
+                        <input id="consent-checkbox" type="checkbox" name="consent" autocomplete="off" required />
                         <span data-uk="Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ"
                                 data-en="I consent to the processing of my personal data as outlined in the CONSENT FOR DATA COLLECTION and agree to the PRIVACY POLICY.">
                             Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ
@@ -930,13 +930,13 @@
     <div class="modal" id="modal2">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="https://formspree.io/f/mzzggwdz" method="POST">
+            <form id="join-form" action="https://formspree.io/f/mzzggwdz" method="POST">
                 <div class="form-board">
                     <img src="./src/image/header/handshake-icon.svg" alt="АМСБ logo" class="form-board__logo" />
                     <h2 data-uk="Приєднатися до АМСБ" data-en="Join SMBA">Приєднатися до АМСБ</h2>
                     <div class="form-board__radio-group">
                         <div class="radio-cont">
-                            <input value="manager" type="radio" name="type" class="radio-manager" />
+                            <input autocomplete="off" value="manager" type="radio" name="type" class="radio-manager" required/>
                             <label for="radio1" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я найманий менеджер"
@@ -950,7 +950,7 @@
                             </label>
                         </div>
                         <div class="radio-cont">
-                            <input value="owner" type="radio" name="type" class="radio-owner" />
+                            <input autocomplete="off" value="owner" type="radio" name="type" class="radio-owner" />
                             <label for="radio2" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я власник бізнесу"
@@ -964,14 +964,14 @@
                             </label>
                         </div>
                     </div>
-                    <input type="text" name="name" placeholder="Ім’я та прізвище"
+                    <input id="name-input" type="text" autocomplete="name" name="name" placeholder="Ім’я та прізвище"
                         data-uk-placeholder="Ім’я та прізвище"
                         data-en-placeholder="Full Name" required />
 
-                    <input type="text" name="phone" placeholder="Телефон"
+                    <input id="phone-input" type="tel" autocomplete="tel" name="phone" placeholder="Телефон"
                         data-uk-placeholder="Телефон"
                         data-en-placeholder="Phone Number" required />
-                    <select name="messenger" required>
+                    <select name="messenger" autocomplete="off" required>
                         <option disabled selected data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
                             Зручний месенджер для комунікації
                         </option>
@@ -980,7 +980,7 @@
                         <option value="WhatsApp">WhatsApp</option>
                     </select>
                     <div class="employees-wrapper" style="display: none;" required>
-                        <select name="employees">
+                        <select name="employees" autocomplete="off">
                             <option disabled selected data-uk="Кількість найманих працівників" data-en="Number of employees">Кількість найманих працівників</option>
                             <option value="1-5">1–5</option>
                             <option value="6-10">6–10</option>
@@ -990,19 +990,19 @@
                             <option value="100+">100 і більше</option>
                         </select>
                     </div>
-                    <input type="email" name="email" placeholder="Email"
+                    <input id="email-input" type="email" autocomplete="email" name="email" placeholder="Email"
                         data-en-placeholder="Email" required />
 
-                    <input type="text" name="company" placeholder="Назва компанії"
+                    <input id="company-input" type="text" name="company" autocomplete="organization" placeholder="Назва компанії"
                         data-uk-placeholder="Назва компанії"
                         data-en-placeholder="Company Name" required />
 
-                    <input type="text" name="city" placeholder="Місто"
+                    <input id="city-input" type="text" name="city" autocomplete="address-level2" placeholder="Місто"
                         data-uk-placeholder="Місто"
                         data-en-placeholder="City" required/>
 
                     <label class="form-board__checkbox">
-                        <input type="checkbox" name="consent" required />
+                        <input id="consent-checkbox" type="checkbox" name="consent" autocomplete="off" required />
                         <span data-uk="Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ"
                                 data-en="I consent to the processing of my personal data as outlined in the CONSENT FOR DATA COLLECTION and agree to the PRIVACY POLICY.">
                             Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ
@@ -1035,13 +1035,13 @@
     <div class="modal" id="modal4">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="https://formspree.io/f/mzzggwdz" method="POST">
+            <form id="join-form" action="https://formspree.io/f/mzzggwdz" method="POST">
                 <div class="form-board">
                     <img src="./src/image/header/handshake-icon.svg" alt="АМСБ logo" class="form-board__logo" />
                     <h2 data-uk="Приєднатися до АМСБ" data-en="Join SMBA">Приєднатися до АМСБ</h2>
                     <div class="form-board__radio-group">
                         <div class="radio-cont">
-                            <input value="manager" type="radio" name="type" class="radio-manager" />
+                            <input autocomplete="off" value="manager" type="radio" name="type" class="radio-manager" required/>
                             <label for="radio1" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я найманий менеджер"
@@ -1055,7 +1055,7 @@
                             </label>
                         </div>
                         <div class="radio-cont">
-                            <input value="owner" type="radio" name="type" class="radio-owner" />
+                            <input autocomplete="off" value="owner" type="radio" name="type" class="radio-owner" />
                             <label for="radio2" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я власник бізнесу"
@@ -1069,14 +1069,14 @@
                             </label>
                         </div>
                     </div>
-                    <input type="text" name="name" placeholder="Ім’я та прізвище"
+                    <input id="name-input" type="text" autocomplete="name" name="name" placeholder="Ім’я та прізвище"
                         data-uk-placeholder="Ім’я та прізвище"
                         data-en-placeholder="Full Name" required />
 
-                    <input type="text" name="phone" placeholder="Телефон"
+                    <input id="phone-input" type="tel" autocomplete="tel" name="phone" placeholder="Телефон"
                         data-uk-placeholder="Телефон"
                         data-en-placeholder="Phone Number" required />
-                    <select name="messenger" required>
+                    <select name="messenger" autocomplete="off" required>
                         <option disabled selected data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
                             Зручний месенджер для комунікації
                         </option>
@@ -1085,7 +1085,7 @@
                         <option value="WhatsApp">WhatsApp</option>
                     </select>
                     <div class="employees-wrapper" style="display: none;" required>
-                        <select name="employees">
+                        <select name="employees" autocomplete="off">
                             <option disabled selected data-uk="Кількість найманих працівників" data-en="Number of employees">Кількість найманих працівників</option>
                             <option value="1-5">1–5</option>
                             <option value="6-10">6–10</option>
@@ -1095,19 +1095,19 @@
                             <option value="100+">100 і більше</option>
                         </select>
                     </div>
-                    <input type="email" name="email" placeholder="Email"
+                    <input id="email-input" type="email" autocomplete="email" name="email" placeholder="Email"
                         data-en-placeholder="Email" required />
 
-                    <input type="text" name="company" placeholder="Назва компанії"
+                    <input id="company-input" type="text" name="company" autocomplete="organization" placeholder="Назва компанії"
                         data-uk-placeholder="Назва компанії"
                         data-en-placeholder="Company Name" required />
 
-                    <input type="text" name="city" placeholder="Місто"
+                    <input id="city-input" type="text" name="city" autocomplete="address-level2" placeholder="Місто"
                         data-uk-placeholder="Місто"
                         data-en-placeholder="City" required/>
 
                     <label class="form-board__checkbox">
-                        <input type="checkbox" name="consent" required />
+                        <input id="consent-checkbox" type="checkbox" name="consent" autocomplete="off" required />
                         <span data-uk="Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ"
                                 data-en="I consent to the processing of my personal data as outlined in the CONSENT FOR DATA COLLECTION and agree to the PRIVACY POLICY.">
                             Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ
@@ -1127,13 +1127,13 @@
     <div class="modal" id="modal5">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="https://formspree.io/f/mzzggwdz" method="POST">
+            <form id="join-form" action="https://formspree.io/f/mzzggwdz" method="POST">
                 <div class="form-board">
                     <img src="./src/image/header/handshake-icon.svg" alt="АМСБ logo" class="form-board__logo" />
                     <h2 data-uk="Приєднатися до АМСБ" data-en="Join SMBA">Приєднатися до АМСБ</h2>
                     <div class="form-board__radio-group">
                         <div class="radio-cont">
-                            <input value="manager" type="radio" name="type" class="radio-manager" />
+                            <input autocomplete="off" value="manager" type="radio" name="type" class="radio-manager" required/>
                             <label for="radio1" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я найманий менеджер"
@@ -1147,7 +1147,7 @@
                             </label>
                         </div>
                         <div class="radio-cont">
-                            <input value="owner" type="radio" name="type" class="radio-owner" />
+                            <input autocomplete="off" value="owner" type="radio" name="type" class="radio-owner" />
                             <label for="radio2" class="radio-cont__text">
                                 <span class="form-board__cont-condition"
                                         data-uk="Я власник бізнесу"
@@ -1161,14 +1161,14 @@
                             </label>
                         </div>
                     </div>
-                    <input type="text" name="name" placeholder="Ім’я та прізвище"
+                    <input id="name-input" type="text" autocomplete="name" name="name" placeholder="Ім’я та прізвище"
                         data-uk-placeholder="Ім’я та прізвище"
                         data-en-placeholder="Full Name" required />
 
-                    <input type="text" name="phone" placeholder="Телефон"
+                    <input id="phone-input" type="tel" autocomplete="tel" name="phone" placeholder="Телефон"
                         data-uk-placeholder="Телефон"
                         data-en-placeholder="Phone Number" required />
-                    <select name="messenger" required>
+                    <select name="messenger" autocomplete="off" required>
                         <option disabled selected data-uk="Зручний месенджер для комунікації" data-en="Preferred messenger for communication">
                             Зручний месенджер для комунікації
                         </option>
@@ -1177,7 +1177,7 @@
                         <option value="WhatsApp">WhatsApp</option>
                     </select>
                     <div class="employees-wrapper" style="display: none;" required>
-                        <select name="employees">
+                        <select name="employees" autocomplete="off">
                             <option disabled selected data-uk="Кількість найманих працівників" data-en="Number of employees">Кількість найманих працівників</option>
                             <option value="1-5">1–5</option>
                             <option value="6-10">6–10</option>
@@ -1187,19 +1187,19 @@
                             <option value="100+">100 і більше</option>
                         </select>
                     </div>
-                    <input type="email" name="email" placeholder="Email"
+                    <input id="email-input" type="email" autocomplete="email" name="email" placeholder="Email"
                         data-en-placeholder="Email" required />
 
-                    <input type="text" name="company" placeholder="Назва компанії"
+                    <input id="company-input" type="text" name="company" autocomplete="organization" placeholder="Назва компанії"
                         data-uk-placeholder="Назва компанії"
                         data-en-placeholder="Company Name" required />
 
-                    <input type="text" name="city" placeholder="Місто"
+                    <input id="city-input" type="text" name="city" autocomplete="address-level2" placeholder="Місто"
                         data-uk-placeholder="Місто"
                         data-en-placeholder="City" required/>
 
                     <label class="form-board__checkbox">
-                        <input type="checkbox" name="consent" required />
+                        <input id="consent-checkbox" type="checkbox" name="consent" autocomplete="off" required />
                         <span data-uk="Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ"
                                 data-en="I consent to the processing of my personal data as outlined in the CONSENT FOR DATA COLLECTION and agree to the PRIVACY POLICY.">
                             Я надаю згоду на обробку своїх персональних даних або інших відомостей про себе на умовах, викладених у ЗГОДІ НА ЗБIР ТА ОБРОБКУ ПЕРСОНАЛЬНИХ ДАНИХ та погоджуюсь з умовами, викладеними у ПОЛІТИЦІ КОНФІДЕНЦІЙНОСТІ ТА ЗАХИСТУ ПЕРСОНАЛЬНИХ ДАНИХ
@@ -1324,6 +1324,9 @@
             </p>
         </div>
     </footer>
-    <script type="module" src="./src/js/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/validator@13.11.0/validator.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"></script>
+    <script type="module" src="./src/js/main.js"></script>
 </body>
 </html>

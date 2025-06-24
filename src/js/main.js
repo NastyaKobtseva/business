@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // modal 
 document.addEventListener('DOMContentLoaded', () => {
-  let scrollPositionContent = 0;
+let scrollPositionContent = 0;
 
   function disableScroll() {
   scrollPositionContent = window.pageYOffset || document.documentElement.scrollTop;
@@ -125,32 +125,33 @@ function enableScroll() {
     });
   });
 
-  document.querySelectorAll('.modal .close').forEach(closeBtn => {
-    closeBtn.addEventListener('click', () => {
-      const modal = closeBtn.closest('.modal');
-      if (!modal) return;
 
-      modal.classList.remove('show');
-      modal.classList.add('hide');
+document.querySelectorAll('.modal .close').forEach(closeBtn => {
+  closeBtn.addEventListener('click', () => {
+    const modal = closeBtn.closest('.modal');
+    if (!modal) return;
 
-      setTimeout(() => {
-        modal.style.display = 'none';
-        enableScroll();
-      }, 400);
-    });
+    modal.classList.remove('show');
+    modal.classList.add('hide');
+
+    setTimeout(() => {
+      modal.style.display = 'none';
+      enableScroll();
+    }, 400);
   });
+});
 
-  window.addEventListener('click', e => {
-    if (e.target.classList.contains('modal')) {
-      e.target.classList.remove('show');
-      e.target.classList.add('hide');
+window.addEventListener('click', e => {
+  if (e.target.classList.contains('modal')) {
+    e.target.classList.remove('show');
+    e.target.classList.add('hide');
 
-      setTimeout(() => {
-        e.target.style.display = 'none';
-        enableScroll();
-      }, 400);
-    }
-  });
+    setTimeout(() => {
+      e.target.style.display = 'none';
+      enableScroll();
+    }, 400);
+  }
+});
 
   document.querySelectorAll('.form-board').forEach(form => {
     const radioOwner = form.querySelector('.radio-owner');
@@ -171,59 +172,76 @@ function enableScroll() {
       });
     }
   });
-
   document.querySelectorAll('.modal form').forEach(form => {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      if (form.checkValidity()) {
-        const formData = new FormData(form);
+      const lang = document.documentElement.lang || 'uk';
 
-        fetch(form.action, {
-          method: form.method,
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        }).then(response => {
-          if (response.ok) {
-            const lang = document.documentElement.lang || 'uk';
-            const submitButton = form.querySelector('button[type="submit"]');
-            const successText = submitButton.getAttribute(`data-${lang}-success`) || "Заявка відправлена ✓";
+      const errors = [];
 
-            submitButton.textContent = successText;
-            submitButton.style.color = 'white';
-            form.reset();
+      const nameInput = form.querySelector('[name="name"]');
+      if (validator.isEmpty(nameInput.value.trim())) {
+        errors.push(lang === 'uk' ? "Будь ласка, введіть ім’я та прізвище" : "Please enter your full name");
+      }
 
-            const employeesWrapper = form.querySelector('.employees-wrapper');
-            if (employeesWrapper) {
-              employeesWrapper.style.display = 'none';
-            }
-          } else {
-            showAlertByLang(document.documentElement.lang || `uk`, `error`);
-          }
-        }).catch(() => {
-          showAlertByLang(document.documentElement.lang || `uk`, `connectionError`);
-        });
+      const phoneInput = form.querySelector('[name="phone"]');
+      if (!validator.isNumeric(phoneInput.value.trim()) || phoneInput.value.trim().length !== 9) {
+        errors.push(lang === 'uk' ? "Невірний номер телефону" : "Invalid phone number");
+      }
+
+      const emailInput = form.querySelector('[name="email"]');
+      if (!validator.isEmail(emailInput.value.trim())) {
+        errors.push(lang === 'uk' ? "Невірний email" : "Invalid email");
+      }
+
+      const cityInput = form.querySelector('[name="city"]');
+      if (validator.isEmpty(cityInput.value.trim())) {
+        errors.push(lang === 'uk' ? "Будь ласка, введіть місто" : "Please enter your city");
+      }
+
+      const consentCheckbox = form.querySelector('[name="consent"]');
+      if (!consentCheckbox.checked) {
+        errors.push(lang === 'uk' ? "Потрібно дати згоду" : "Consent is required");
+      }
+
+      if (errors.length > 0) {
+        alert(errors.join('\n'));
+        return;
+      }
+
+      // Якщо все ок — відправляємо
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          const submitButton = form.querySelector('button[type="submit"]');
+          const successText = submitButton.getAttribute(`data-${lang}-success`) || "Заявка відправлена ✓";
+          submitButton.textContent = successText;
+          form.reset();
         } else {
-          form.reportValidity();
+          showAlertByLang(lang, 'error');
         }
+      }).catch(() => {
+        showAlertByLang(lang, 'connectionError');
+      });
     });
-    function showAlertByLang(lang, type) {
-      const messages = {
-        uk: {
-          error: `Щось пішло не так. Спробуйте ще раз.`,
-          connectionError: `Сталася помилка з’єднання. Спробуйте пізніше.`
-        }, 
-        en: {
-          error: `Something went wrong. Please try again.`,
-          connectionError: `Connection error occurred. Please try later.`
-        }
-      };
-      alert(messages[lang]?.[type] || messages[`uk`][type])
-    }
   });
 
+});
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('input[name="phone"]').forEach(input => {
+    window.intlTelInput(input, {
+      initialCountry: "ua",
+      preferredCountries: ["ua"],
+      separateDialCode: true,
+      showFlags: true,
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+    });
+  });
 });
 
 
