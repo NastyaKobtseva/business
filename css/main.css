@@ -1648,11 +1648,9 @@ a {
     padding: 8px 16px;
   }
 }
+html.modal-open,
 body.modal-open {
   overflow: hidden;
-  position: fixed;
-  width: 100%;
-  padding-right: 0 !important;
 }
 
 .open-modal {

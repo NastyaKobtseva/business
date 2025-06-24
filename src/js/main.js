@@ -91,24 +91,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // modal 
 document.addEventListener('DOMContentLoaded', () => {
-let scrollPositionContent = 0;
-
-  function disableScroll() {
-  scrollPositionContent = window.pageYOffset || document.documentElement.scrollTop;
+function disableScroll() {
+  document.documentElement.classList.add('modal-open');
   document.body.classList.add('modal-open');
-  document.body.style.top = `-${scrollPositionContent}px`;
-
-  const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-  if (scrollBarWidth > 0) {
-    document.body.style.paddingRight = `${scrollBarWidth}px`;
-  }
 }
 
 function enableScroll() {
+  document.documentElement.classList.remove('modal-open');
   document.body.classList.remove('modal-open');
-  document.body.style.top = '';
-  document.body.style.paddingRight = '';
-  window.scrollTo(0, scrollPositionContent);
 }
 
   document.querySelectorAll('.open-modal').forEach(button => {
