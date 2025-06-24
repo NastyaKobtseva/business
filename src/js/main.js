@@ -232,17 +232,17 @@ window.addEventListener('click', e => {
   });
 
 });
-// document.addEventListener('DOMContentLoaded', function () {
-//   document.querySelectorAll('input[name="phone"]').forEach(input => {
-//     window.intlTelInput(input, {
-//       initialCountry: "ua",
-//       preferredCountries: ["ua"],
-//       separateDialCode: true,
-//       showFlags: true,
-//       utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
-//     });
-//   });
-// });
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('input[name="phone"]').forEach(input => {
+    window.intlTelInput(input, {
+      initialCountry: "ua",
+      preferredCountries: ["ua"],
+      separateDialCode: true,
+      showFlags: true,
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+    });
+  });
+});
 
 
 // carousel 
