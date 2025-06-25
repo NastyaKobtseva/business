@@ -177,7 +177,7 @@ window.addEventListener('click', e => {
       const phoneInput = form.querySelector('[name="phone"]');
       const phoneValue = phoneInput.value.trim();
       if (!validator.isEmpty(phoneValue)) {
-        const onlyDigits = phoneValue.replace(/\D/g, ''); // Видаляємо всі нецифрові символи
+        const onlyDigits = phoneValue.replace(/\D/g, '');
 
         if (onlyDigits.length !== 9) {
           errors.push(lang === 'uk' ? "Номер телефону має містити 9 цифр" : "Phone number must contain 9 digits");
@@ -205,9 +205,10 @@ window.addEventListener('click', e => {
         alert(errors.join('\n'));
         return;
       }
-
-      // Якщо все ок — відправляємо
+      const iti = window.intlTelInputGlobals.getInstance(phoneInput);
+      const fullNumber = iti.getNumber();
       const formData = new FormData(form);
+      formData.set('phone', fullNumber)
       fetch(form.action, {
         method: form.method,
         body: formData,
