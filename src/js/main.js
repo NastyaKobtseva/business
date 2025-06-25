@@ -174,10 +174,16 @@ window.addEventListener('click', e => {
       if (validator.isEmpty(nameInput.value.trim())) {
         errors.push(lang === 'uk' ? "Будь ласка, введіть ім’я та прізвище" : "Please enter your full name");
       }
-
       const phoneInput = form.querySelector('[name="phone"]');
-      if (!validator.isNumeric(phoneInput.value.trim()) || phoneInput.value.trim().length !== 9) {
-        errors.push(lang === 'uk' ? "Невірний номер телефону" : "Invalid phone number");
+      const phoneValue = phoneInput.value.trim();
+      if (!validator.isEmpty(phoneValue)) {
+        const onlyDigits = phoneValue.replace(/\D/g, ''); // Видаляємо всі нецифрові символи
+
+        if (onlyDigits.length !== 9) {
+          errors.push(lang === 'uk' ? "Номер телефону має містити 9 цифр" : "Phone number must contain 9 digits");
+        }
+      } else {
+        errors.push(lang === 'uk' ? "Поле телефону є обов'язковим" : "Phone field is required");
       }
 
       const emailInput = form.querySelector('[name="email"]');
